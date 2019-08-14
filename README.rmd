@@ -115,7 +115,33 @@ ggplot() +
   geom_text(aes(label="SAA\nmeeting",
                       x = ymd_hms("2019-04-12 08:00:00 UTC"),
                       y = -4), size=3) +
-  labs(y = "Mean sentiment of tweets/hour",
+  labs(y = "Mean sentiment score of tweets/hour",
+       x = "Date") +
+       theme_minimal(base_size = 12) 
+
+```
+
+Here's the same plot without without color:
+
+
+```{r cache=TRUE, echo=FALSE}
+
+ggplot() +
+  geom_point(data = bytweet_saa2019_tweet_archive_dttm_sentiment_tally,
+           aes(hour, mean_sentiment)) +
+  geom_smooth(data = bytweet_saa2019_tweet_archive_dttm_sentiment_tally,
+           aes(hour, mean_sentiment)) +
+      annotate("rect", 
+             xmin = ymd_hms("2019-04-10 08:00:00 UTC"),
+             xmax = ymd_hms("2019-04-14 12:00:00 UTC"),
+             ymin = -Inf,
+             ymax = Inf, 
+             alpha = 0.1,  
+             fill = "blue") +
+  geom_text(aes(label="SAA\nmeeting",
+                      x = ymd_hms("2019-04-12 08:00:00 UTC"),
+                      y = -4), size=3) +
+  labs(y = "Mean sentiment score of tweets/hour",
        x = "Date") +
        theme_minimal(base_size = 12) 
 
@@ -165,7 +191,7 @@ ggplot() +
   geom_text(aes(label="SAA\nmeeting",
                       x = ymd_hms("2019-04-12 08:00:00 UTC"),
                       y = -4), size=3) +
-  labs(y = "Mean sentiment of tweets/hour",
+  labs(y = "Mean sentiment score of tweets/hour",
        x = "Month") +
        theme_minimal(base_size = 12) 
 
