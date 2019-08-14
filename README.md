@@ -6,7 +6,7 @@ Jolene Smith
 SAA2019 Twitter Analysis
 ------------------------
 
-The code here builds on code and data from Ben Marwick, available at [OSF](http://doi.org/10.17605/OSF.IO/4CRH8) and [GitHub](https://github.com/benmarwick/saa2019-tweets) with an interactive binder.
+The code and figures here derive from code and data from Ben Marwick, available at [OSF](http://doi.org/10.17605/OSF.IO/4CRH8) and [GitHub](https://github.com/benmarwick/saa2019-tweets) with an interactive binder.
 
 Acquire the tweets from the TAGS Google sheet
 =============================================
@@ -41,7 +41,7 @@ write_csv(afinn,
 Mean sentiment of tweets by hour
 --------------------------------
 
-### From Ben Marwick:
+#### From Ben Marwick:
 
 > Sentiment analysis of tweets containing the \#saa2019 hashtag posted during March-April 2019. The sentiment of a word in a tweet is computed by looking it up in the AFINN lexicon, which is a list of words that have been tagged by Nielsen et al. with a sentiment score (positive or negative). There are many similar lists, and all have limitations ([1](https://hoyeolkim.wordpress.com/2018/02/25/the-limits-of-the-bing-afinn-and-nrc-lexicons-with-the-tidytext-package-in-r/)). I chose this one because it is optimised for social media text and contains words that are found on twitter but rarely in other contexts. More details about this list have been published here:
 
@@ -148,7 +148,7 @@ ggplot() +
   geom_text(aes(label="SAA\nmeeting",
                       x = ymd_hms("2019-04-12 08:00:00 UTC"),
                       y = -4), size=3) +
-  labs(y = "Mean sentiment of tweets/hour",
+  labs(y = "Mean sentiment score of tweets/hour",
        x = "Date") +
        theme_minimal(base_size = 12) 
 ```
@@ -156,6 +156,12 @@ ggplot() +
     ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
 
 <img src="README_files/figure-markdown_github/unnamed-chunk-2-1.png" width="2100" />
+
+Here's the same plot without without color:
+
+    ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
+
+<img src="README_files/figure-markdown_github/unnamed-chunk-3-1.png" width="2100" />
 
 Without dates constrained, there is some noise introduced by use of the \#SAA2019 hashtag by other events, but the trend is still visible.
 
@@ -208,11 +214,11 @@ ggplot() +
   geom_text(aes(label="SAA\nmeeting",
                       x = ymd_hms("2019-04-12 08:00:00 UTC"),
                       y = -4), size=3) +
-  labs(y = "Mean sentiment of tweets/hour",
+  labs(y = "Mean sentiment score of tweets/hour",
        x = "Month") +
        theme_minimal(base_size = 12) 
 ```
 
     ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
 
-<img src="README_files/figure-markdown_github/unnamed-chunk-3-1.png" width="2100" />
+<img src="README_files/figure-markdown_github/unnamed-chunk-4-1.png" width="2100" />
