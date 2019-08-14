@@ -99,7 +99,7 @@ bytweet_saa2019_tweet_archive_dttm_sentiment %>%
   
 ggplot() +
   geom_point(data = bytweet_saa2019_tweet_archive_dttm_sentiment_tally,
-           aes(hour, mean_sentiment, color = mean_sentiment)) +
+           aes(hour, mean_sentiment, color = mean_sentiment), show.legend = FALSE) +
   geom_smooth(data = bytweet_saa2019_tweet_archive_dttm_sentiment_tally,
            aes(hour, mean_sentiment)) +
   scale_color_continuous(low = "red", 
